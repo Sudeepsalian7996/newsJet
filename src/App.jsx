@@ -21,12 +21,12 @@ function App() {
           height={3}
         />
         <Routes >
-          <Route path='/' key='general' element={<News changeProgress={changeProgress} country='in' category='general' />}></Route>
-          <Route path='/entertainment' key='entertainment' element={<News changeProgress={changeProgress} country='in' category='entertainment' />}></Route>
-          <Route path='/health' key='health' element={<News changeProgress={changeProgress} country='in' category='health' />}></Route>
-          <Route path='/science' key='science' element={<News changeProgress={changeProgress} country='in' category='science' />}> </Route>
-          <Route path='/sports' key='sports' element={<News changeProgress={changeProgress} country='in' category='sports' />}></Route>
-          <Route path='/technology' key='technology' element={<News changeProgress={changeProgress} country='in' category='technology' />}></Route>
+          <Route path='/' key='general' element={<News changeProgress={changeProgress} country='in' pageSize='5' category='general' />}></Route>
+          <Route path='/entertainment' key='entertainment' element={<News changeProgress={changeProgress} country='in' pageSize='5' category='entertainment' />}></Route>
+          <Route path='/health' key='health' element={<News changeProgress={changeProgress} country='in' pageSize='5' category='health' />}></Route>
+          <Route path='/science' key='science' element={<News changeProgress={changeProgress} country='in' pageSize='5' category='science' />}> </Route>
+          <Route path='/sports' key='sports' element={<News changeProgress={changeProgress} country='in' pageSize='5' category='sports' />}></Route>
+          <Route path='/technology' key='technology' element={<News changeProgress={changeProgress} country='in' pageSize='5' category='technology' />}></Route>
         </Routes >
       </Router>
     </>
