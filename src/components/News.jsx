@@ -54,19 +54,24 @@ export default function News({category, changeProgress,pageSize, mode, search}) 
       dataLength={data.length}
       next={fetchMoreData}
       hasMore={data.length !== totalResults}
-      loader={<Loader />}
-      className={`${mode === true?'bg-dark':'' }`}>
+      loader={data.filter((item) => {
+        return search?.toLowerCase() === '' ? item : item?.title?.toLowerCase()?.includes(search?.toLowerCase());
+      }).length !== 0 && <Loader />}
+      className={`text-center ${mode === true?'bg-dark':'' }`}>
         <div className='container'>
           <div className='row justify-content-evenly'>
           {data.filter((item) => {
-           return search.toLowerCase() === '' ? item
-           :item.title.toLowerCase().includes(search.toLowerCase());
-          }).map((element, index) => (
+           return search?.toLowerCase() === '' ? item
+           :item?.title?.toLowerCase()?.includes(search?.toLowerCase());
+          }).map((element, index) => (   
             <div className='col-md-3' key={index}>
-              <NewsItem title={element.title} description={element.description} imageUrl={element.urlToImage} url={element.url}
-              author={element.author} date={element.publishedAt} source={element.source.name} mode={mode}/>
-            </div>
+            <NewsItem title={element.title} description={element.description} imageUrl={element.urlToImage} url={element.url}
+            author={element.author} date={element.publishedAt} source={element.source.name} mode={mode}/>
+            </div>         
           ))}
+          {data.filter((item) => {
+            return search?.toLowerCase() === '' ? item : item?.title?.toLowerCase()?.includes(search?.toLowerCase());
+          }).length === 0 && <p className={`${mode === true ?'text-light':''}`}>No search results found.</p>} 
         </div>
       </div>
       </InfiniteScroll>
